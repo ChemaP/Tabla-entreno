@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Tabla de Entreno</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0f0f0f; --card:#181818; --card2:#1f1f1f; --accent:#e8ff47; --accent2:#ff6b35; --blue:#7dd3fc; --text:#f0f0f0; --muted:#888; --border:#2a2a2a; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; min-height:100vh; padding:2rem 1rem 4rem; }
+  header { max-width:720px; margin:0 auto 2.5rem; }
+  .tag { font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); background:rgba(232,255,71,0.1); border:1px solid rgba(232,255,71,0.25); padding:0.3rem 0.8rem; border-radius:2px; display:inline-block; margin-bottom:1rem; }
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,10vw,5.5rem); line-height:0.95; margin-bottom:0.8rem; }
+  h1 span { color:var(--accent); }
+  .subtitle { color:var(--muted); font-size:0.9rem; font-weight:300; line-height:1.6; }
+  .stats-row { max-width:720px; margin:0 auto 2.5rem; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  .stat { background:var(--card); padding:1rem; text-align:center; }
+  .stat-val { font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--accent); line-height:1; }
+  .stat-label { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.1em; margin-top:0.3rem; }
+  .week { max-width:720px; margin:0 auto 2rem; }
+  .week-header { display:flex; align-items:center; gap:0.8rem; margin-bottom:1rem; flex-wrap:wrap; }
+  .day-badge { font-family:'Bebas Neue',sans-serif; font-size:0.75rem; letter-spacing:0.15em; padding:0.25rem 0.7rem; border-radius:3px; text-transform:uppercase; background:var(--accent); color:#000; }
+  .day-title { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.05em; }
+  .day-focus { font-size:0.72rem; color:var(--accent2); text-transform:uppercase; letter-spacing:0.1em; margin-left:auto; }
 
+  .exercises { background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+  .ex-header { display:flex; justify-content:space-between; background:var(--card2); padding:0.5rem 1.2rem; }
+  .ex-header span { font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }
+  .ex-row { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.2rem; border-bottom:1px solid var(--border); gap:0.7rem; transition:background 0.15s; }
+  .ex-row:last-child { border-bottom:none; }
+  .ex-row:hover { background:var(--card2); }
+  .ex-info { flex:1; min-width:0; }
+  .ex-name { font-size:0.88rem; font-weight:500; }
+  .ex-note { font-size:0.7rem; color:var(--muted); margin-top:0.15rem; }
+  .ex-alt { font-size:0.68rem; color:var(--blue); margin-top:0.25rem; }
+  .ex-alt::before { content:'⇄ ocupada: '; color:#666; }
+  .ex-new { font-size:0.6rem; background:rgba(232,255,71,0.15); color:var(--accent); border:1px solid rgba(232,255,71,0.3); padding:0.05rem 0.3rem; border-radius:3px; margin-left:0.3rem; text-transform:uppercase; letter-spacing:0.05em; }
+  .ex-meta { display:flex; align-items:center; gap:0.4rem; flex-shrink:0; }
+  .chip { font-family:'Bebas Neue',sans-serif; font-size:0.85rem; padding:0.2rem 0.5rem; border-radius:4px; white-space:nowrap; }
+  .chip-s { background:rgba(232,255,71,0.12); color:var(--accent); border:1px solid rgba(232,255,71,0.25); }
+  .chip-r { background:var(--card2); color:var(--text); border:1px solid var(--border); }
+  .chip-d { background:var(--card2); color:var(--muted); border:1px solid var(--border); font-size:0.75rem; }
+  .weight-box { display:flex; align-items:center; gap:3px; background:var(--card2); border:1px solid var(--border); border-radius:5px; padding:0.15rem 0.4rem; flex-shrink:0; }
+  .weight-box input { width:40px; background:transparent; border:none; color:var(--accent); font-family:'Bebas Neue',sans-serif; font-size:0.95rem; text-align:center; outline:none; }
+  .weight-box input::placeholder { color:#555; }
+  .weight-box span { font-size:0.62rem; color:var(--muted); }
+  .guide-btn { font-size:0.65rem; font-weight:600; padding:0.28rem 0.5rem; background:rgba(232,255,71,0.1); color:var(--accent); border:1px solid rgba(232,255,71,0.3); border-radius:5px; text-decoration:none; white-space:nowrap; flex-shrink:0; }
+  .guide-btn:hover { background:rgba(232,255,71,0.2); }
+  .save-status { max-width:720px; margin:0 auto 1rem; font-size:0.72rem; color:var(--muted); text-align:right; }
+  .save-status.saved { color:var(--accent); }
+  @media(max-width:500px) { .ex-meta { gap:0.25rem; } .chip-d { display:none; } .ex-name { font-size:0.82rem; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">Plan personalizado · 48 años · Barriga + músculo</div>
+  <h1>TU TABLA<br>DE <span>ENTRENO</span></h1>
+  <p class="subtitle">3 días/semana · Máquinas y pesas · 19:00–20:30h · Anota el peso de cada serie</p>
+</header>
+
+<div class="stats-row">
+  <div class="stat"><div class="stat-val">3</div><div class="stat-label">Días gym</div></div>
+  <div class="stat"><div class="stat-val">19</div><div class="stat-label">Ejercicios</div></div>
+  <div class="stat"><div class="stat-val">19h</div><div class="stat-label">Horario</div></div>
+</div>
+
+<div class="save-status" id="saveStatus">Los pesos se guardan automáticamente</div>
+
+<!-- ===== DÍA A ===== -->
+<div class="week">
+  <div class="week-header">
+    <div class="day-badge">Día A</div>
+    <div class="day-title">PECHO · HOMBRO · TRÍCEPS</div>
+    <div class="day-focus">Empuje</div>
+  </div>
+  <div class="exercises">
+    <div class="ex-header"><span>Ejercicio</span><span>Series · Reps · Desc · Guía · Kg</span></div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Press banca máquina</div><div class="ex-note">Controla la bajada 3 seg</div><div class="ex-alt">Press banca con mancuernas en banco plano</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">90"</span><a class="guide-btn" href="https://www.hsnstore.com/blog/rutinas-entrenamiento/pecho/press-banca/maquina-sentado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a1" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Press inclinado mancuernas</div><div class="ex-note">Ángulo 30–45°</div><div class="ex-alt">Press inclinado en máquina, o banco plano si no hay inclinado</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">90"</span><a class="guide-btn" href="https://www.hsnstore.com/blog/rutinas-entrenamiento/pecho/press-banca/inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a2" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Press militar máquina</div><div class="ex-note">Espalda pegada al respaldo</div><div class="ex-alt">Press militar sentado con mancuernas</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">90"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/hombros/press-militar-sentado-maquina/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a3" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Elevaciones laterales mancuernas</div><div class="ex-note">Codos ligeramente flexionados, sin balanceo</div><div class="ex-alt">Elevación lateral en polea baja, un brazo cada vez</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/hombros/elevaciones-laterales-con-mancuernas/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a4" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Extensión tríceps sobre la cabeza<span class="ex-new">cambio</span></div><div class="ex-note">Versión estirada: más crecimiento que la polea hacia abajo. Codos quietos</div><div class="ex-alt">Con mancuerna a dos manos sentado, o polea con cuerda desde arriba</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">75"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/triceps/extension-de-triceps-por-encima-de-la-cabeza-con-barra-polea-baja/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="a5" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Extensión tríceps polea hacia abajo<span class="ex-new">nuevo</span></div><div class="ex-note">Segundo ejercicio: posición contraída. Codos fijos al cuerpo</div><div class="ex-alt">Fondos de tríceps en banco (no bajes más de 90° de codo)</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/triceps/extension-de-triceps-en-polea-cuerda/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="a6" placeholder="0"><span>kg</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DÍA B ===== -->
+<div class="week">
+  <div class="week-header">
+    <div class="day-badge">Día B</div>
+    <div class="day-title">ESPALDA · BÍCEPS</div>
+    <div class="day-focus">Tirón</div>
+  </div>
+  <div class="exercises">
+    <div class="ex-header"><span>Ejercicio</span><span>Series · Reps · Desc · Guía · Kg</span></div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Jalón al pecho polea</div><div class="ex-note">Agarre ancho, codos hacia caderas</div><div class="ex-alt">Dominadas asistidas en máquina, o jalón con agarre neutro</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">90"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/jalon-al-pecho-agarre-ancho/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b1" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Remo en máquina sentado</div><div class="ex-note">Aprieta escápulas al final</div><div class="ex-alt">Remo sentado en polea baja con barra en V</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">90"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/remo-sentado-maquina/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b2" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Remo mancuerna a una mano</div><div class="ex-note">Espalda paralela al suelo, apoyo en banco</div><div class="ex-alt">Remo sentado a un brazo en polea</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">10–12</span><span class="chip chip-d">75"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/remo-con-mancuerna-a-un-brazo-inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b3" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Pullover en polea</div><div class="ex-note">Brazos casi estirados</div><div class="ex-alt">Pullover con mancuerna tumbado en banco</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/pecho/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b4" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Pájaros tumbado en banco inclinado<span class="ex-new">cambio</span></div><div class="ex-note">Deltoide posterior. Pecho apoyado a 30–45°, peso ligero, separa omóplatos</div><div class="ex-alt">Pájaros de pie inclinado, o apertura inversa en polea si se libera</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">15</span><span class="chip chip-d">60"</span><a class="guide-btn" href="https://prowessapp.com/exercises/pajaros-en-banco-inclinado" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b5" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Curl inclinado con mancuernas<span class="ex-new">cambio</span></div><div class="ex-note">Banco a 45°, brazos colgando detrás: bíceps estirado. Deja 1–2 reps en reserva</div><div class="ex-alt">Curl en banco predicador, o curl en polea baja</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">75"</span><a class="guide-btn" href="https://mundoentrenamiento.com/curl-de-biceps-en-banco-inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b6" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Curl martillo de pie<span class="ex-new">nuevo</span></div><div class="ex-note">Segundo ejercicio: agarre neutro, trabaja braquial. Codos quietos</div><div class="ex-alt">Curl martillo sentado en banco, o con cuerda en polea baja</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">60"</span><a class="guide-btn" href="https://mundoentrenamiento.com/curl-martillo-con-mancuernas/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b7" placeholder="0"><span>kg</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DÍA C ===== -->
+<div class="week">
+  <div class="week-header">
+    <div class="day-badge">Día C</div>
+    <div class="day-title">PIERNAS · GLÚTEOS</div>
+    <div class="day-focus">Tren inferior</div>
+  </div>
+  <div class="exercises">
+    <div class="ex-header"><span>Ejercicio</span><span>Series · Reps · Desc · Guía · Kg</span></div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Prensa de piernas</div><div class="ex-note">Pies al ancho de hombros, rodillas no colapsen</div><div class="ex-alt">Sentadilla en máquina Hack, o goblet más pesada</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">2'</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/quadriceps/leg-press/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c1" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Peso muerto rumano mancuernas<span class="ex-new">nuevo</span></div><div class="ex-note">Bisagra de cadera — glúteo e isquios. Espalda neutra</div><div class="ex-alt">No necesita máquina: mancuernas o barra</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">8–10</span><span class="chip chip-d">2'</span><a class="guide-btn" href="https://enfaf.com/peso-muerto-rumano/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="c2" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Sentadilla goblet mancuerna</div><div class="ex-note">Profundidad cómoda, espalda recta</div><div class="ex-alt">No necesita máquina: mancuerna o kettlebell</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12</span><span class="chip chip-d">90"</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/quadriceps/goblet-squat-dumbbell/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c3" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Curl femoral sentado máquina<span class="ex-new">cambio</span></div><div class="ex-note">Sentado: más estiramiento del isquio que tumbado</div><div class="ex-alt">Curl femoral tumbado, o peso muerto a una pierna</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">75"</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/hamstrings/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c4" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Extensiones cuádriceps máquina</div><div class="ex-note">No uses impulso</div><div class="ex-alt">Zancadas caminando con mancuernas</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">75"</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/quadriceps/seated-leg-extension-machine/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c5" placeholder="0"><span>kg</span></div></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Gemelos de pie en máquina</div><div class="ex-note">Rango completo de movimiento</div><div class="ex-alt">Gemelos en escalón con mancuerna en la mano</div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">15–20</span><span class="chip chip-d">60"</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/calves/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c6" placeholder="0"><span>kg</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CORE ===== -->
+<div class="week">
+  <div class="week-header">
+    <div class="day-badge">Core</div>
+    <div class="day-title">3 MIN AL FINAL</div>
+    <div class="day-focus">Cualquier día · protege espalda</div>
+  </div>
+  <div class="exercises">
+    <div class="ex-header"><span>Ejercicio</span><span>Series · Tiempo · Desc · Vídeo</span></div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Plancha frontal</div><div class="ex-note">Cadera neutra, aprieta glúteo, respira. No aguantes por aguantar</div><div class="ex-alt">Plancha con rodillas apoyadas si no llegas a 30"</div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">30–45"</span><span class="chip chip-d">45"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/abdominales/" target="_blank">Vídeo</a></div>
+    </div>
+    <div class="ex-row">
+      <div class="ex-info"><div class="ex-name">Plancha lateral</div><div class="ex-note">Trabaja el oblicuo, clave para la espalda. Cadera alta</div><div class="ex-alt">Con rodilla de abajo apoyada</div></div>
+      <div class="ex-meta"><span class="chip chip-s">2</span><span class="chip chip-r">20–30"</span><span class="chip chip-d">45"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/abdominales/" target="_blank">Vídeo</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function() {
+  const status = document.getElementById('saveStatus');
+  const inputs = document.querySelectorAll('.weight-box input');
+  const KEY = 'tabla_entreno_pesos';
+  let saveTimeout = null;
+
+  // Detecta dónde puede guardar: navegador (móvil/PC) o entorno Claude
+  let modo = 'ninguno';
+  try {
+    window.localStorage.setItem('__test__', '1');
+    window.localStorage.removeItem('__test__');
+    modo = 'local';
+  } catch (e) {
+    if (window.storage) modo = 'claude';
+  }
+
+  async function cargar() {
+    try {
+      if (modo === 'local') {
+        const raw = window.localStorage.getItem(KEY);
+        return raw ? JSON.parse(raw) : null;
+      }
+      if (modo === 'claude') {
+        const r = await window.storage.get('weights');
+        return r && r.value ? JSON.parse(r.value) : null;
+      }
+    } catch (e) { return null; }
+    return null;
+  }
+
+  async function guardar(data) {
+    if (modo === 'local') {
+      window.localStorage.setItem(KEY, JSON.stringify(data));
+      return true;
+    }
+    if (modo === 'claude') {
+      await window.storage.set('weights', JSON.stringify(data));
+      return true;
+    }
+    return false;
+  }
+
+  const data = await cargar();
+  if (data) {
+    inputs.forEach(inp => {
+      if (data[inp.dataset.key] !== undefined) inp.value = data[inp.dataset.key];
+    });
+  }
+
+  if (modo === 'ninguno') {
+    status.textContent = 'Este navegador no permite guardar los pesos';
+  }
+
+  function aviso(txt, ok) {
+    status.textContent = txt;
+    status.classList.toggle('saved', !!ok);
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
+      status.textContent = 'Los pesos se guardan automáticamente';
+      status.classList.remove('saved');
+    }, 1500);
+  }
+
+  async function guardarTodo() {
+    const d = {};
+    inputs.forEach(inp => { if (inp.value !== '') d[inp.dataset.key] = inp.value; });
+    try {
+      const ok = await guardar(d);
+      aviso(ok ? 'Guardado ✓' : 'No se pudo guardar', ok);
+    } catch (e) {
+      aviso('No se pudo guardar', false);
+    }
+  }
+
+  inputs.forEach(inp => {
+    inp.addEventListener('change', guardarTodo);
+    inp.addEventListener('blur', guardarTodo);
+  });
+})();
+</script>
+
+</body>
+</html>
