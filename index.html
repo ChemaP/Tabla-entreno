@@ -34,7 +34,8 @@
   .ex-info { flex:1; min-width:0; }
   .ex-name { font-size:0.88rem; font-weight:500; }
   .ex-note { font-size:0.7rem; color:var(--muted); margin-top:0.15rem; }
-  .ex-alt { font-size:0.68rem; color:var(--blue); margin-top:0.25rem; }
+  .ex-alt { font-size:0.75rem; color:var(--blue); margin-top:0.3rem; }
+  .ex-alt a { display:inline-block; padding:0.15rem 0; }
   .ex-alt a { color:var(--blue); text-decoration:underline; font-weight:600; }
   .ex-alt::before { content:'⇄ ocupada: '; color:var(--muted); }
   .ex-meta { display:flex; align-items:center; gap:0.4rem; flex-shrink:0; }
@@ -49,7 +50,7 @@
   .guide-btn { font-size:0.65rem; font-weight:600; padding:0.28rem 0.5rem; background:rgba(138,158,0,0.12); color:var(--accent); border:1px solid rgba(138,158,0,0.3); border-radius:5px; text-decoration:none; white-space:nowrap; flex-shrink:0; }
   .save-status { max-width:720px; margin:0 auto 1rem; font-size:0.72rem; color:var(--muted); text-align:right; }
   .save-status.saved { color:var(--accent); }
-  @media(max-width:500px) { .ex-meta { gap:0.25rem; } .ex-name { font-size:0.82rem; } }
+  @media(max-width:500px) { .ex-row { flex-direction:column; align-items:stretch; gap:0.5rem; padding:0.8rem 1rem; } .ex-meta { gap:0.3rem; flex-wrap:wrap; } .ex-name { font-size:0.9rem; } .ex-header span:last-child { display:none; } }
   .rest-tip { font-size:0.75rem; color:var(--muted); padding:0.5rem 0.9rem; border-bottom:1px solid var(--border); }
 </style>
 </head>
@@ -79,31 +80,31 @@
   <div class="exercises">
     <div class="ex-header"><span>Ejercicio</span><span>Series · Reps · ⏱ Descanso · Guía · Kg</span></div><div class="rest-tip">⏱ Descanso entre series = el que marca cada ejercicio. Entre ejercicios: 2–3 min (cambiar de máquina, respirar y beber agua).</div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Press banca máquina sentado</div><div class="ex-note">Controla la bajada 3 seg</div><div class="ex-alt">Press banca con mancuernas en banco plano</div></div>
-      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 90"</span><a class="guide-btn" href="https://www.hsnstore.com/blog/rutinas-entrenamiento/pecho/press-banca/maquina-sentado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a1" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Press banca máquina sentado</div><div class="ex-note">Controla la bajada 3 seg</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/0289/dumbbell-bench-press/" target="_blank">Press banca con mancuernas en banco plano ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 2'</span><a class="guide-btn" href="https://www.hsnstore.com/blog/rutinas-entrenamiento/pecho/press-banca/maquina-sentado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a1" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Press inclinado mancuernas</div><div class="ex-note">Ángulo 30–45°</div><div class="ex-alt">Press inclinado en máquina</div></div>
-      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 90"</span><a class="guide-btn" href="https://www.hsnstore.com/blog/rutinas-entrenamiento/pecho/press-banca/inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a2" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Press inclinado mancuernas</div><div class="ex-note">Ángulo 30–45°</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/1299/lever-incline-chest-press/" target="_blank">Press inclinado en máquina ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 2'</span><a class="guide-btn" href="https://www.hsnstore.com/blog/rutinas-entrenamiento/pecho/press-banca/inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a2" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Press militar máquina</div><div class="ex-note">Espalda pegada al respaldo</div><div class="ex-alt">Press militar sentado con mancuernas</div></div>
-      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 90"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/hombros/press-militar-sentado-maquina/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a3" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Press militar máquina</div><div class="ex-note">Espalda pegada al respaldo</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/2237/dumbbell-seated-shoulder-press/" target="_blank">Press militar sentado con mancuernas ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 2'</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/hombros/press-militar-sentado-maquina/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a3" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Elevaciones laterales mancuernas</div><div class="ex-note">Codos algo flexionados, sin balanceo</div><div class="ex-alt">Elevación lateral en polea baja</div></div>
-      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/hombros/elevaciones-laterales-con-mancuernas/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a4" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Elevaciones laterales mancuernas</div><div class="ex-note">Codos algo flexionados, sin balanceo</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/3054/cable-lateral-raise/" target="_blank">Elevación lateral en polea baja ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/hombros/elevaciones-laterales-con-mancuernas/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a4" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Pájaros tumbado en banco inclinado</div><div class="ex-note">Deltoide posterior. Pecho apoyado 30–45°, peso ligero</div><div class="ex-alt">Pájaros de pie inclinado, o apertura inversa en polea</div></div>
+      <div class="ex-info"><div class="ex-name">Pájaros tumbado en banco inclinado</div><div class="ex-note">Deltoide posterior. Pecho apoyado 30–45°, peso ligero</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/2487/dumbbell-rear-delt-fly/" target="_blank">Pájaros de pie inclinado, o apertura inversa en polea ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://prowessapp.com/exercises/pajaros-en-banco-inclinado" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a5" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Extensión tríceps sobre la cabeza</div><div class="ex-note">Versión estirada: más crecimiento. Codos quietos</div><div class="ex-alt">Con mancuerna a dos manos sentado</div></div>
+      <div class="ex-info"><div class="ex-name">Extensión tríceps sobre la cabeza</div><div class="ex-note">Versión estirada: más crecimiento. Codos quietos</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/2488/dumbbell-seated-triceps-extension/" target="_blank">Con mancuerna a dos manos sentado ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/triceps/extension-de-triceps-por-encima-de-la-cabeza-con-barra-polea-baja/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a6" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Extensión tríceps polea hacia abajo</div><div class="ex-note">Posición contraída. Codos fijos al cuerpo</div><div class="ex-alt">Fondos de tríceps en banco (no bajes de 90° de codo)</div></div>
+      <div class="ex-info"><div class="ex-name">Extensión tríceps polea hacia abajo</div><div class="ex-note">Posición contraída. Codos fijos al cuerpo</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/2346/bench-dip-back-arms-wrong-right/" target="_blank">Fondos de tríceps en banco (no bajes de 90° de codo) ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/triceps/extension-de-triceps-en-polea-cuerda/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="a7" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
@@ -123,28 +124,28 @@
   <div class="exercises">
     <div class="ex-header"><span>Ejercicio</span><span>Series · Reps · ⏱ Descanso · Guía · Kg</span></div><div class="rest-tip">⏱ Descanso entre series = el que marca cada ejercicio. Entre ejercicios: 2–3 min (cambiar de máquina, respirar y beber agua).</div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Jalón al pecho polea</div><div class="ex-note">Agarre ancho, codos hacia caderas</div><div class="ex-alt">Dominadas asistidas, o jalón agarre neutro</div></div>
-      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 90"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/jalon-al-pecho-agarre-ancho/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b1" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Jalón al pecho polea</div><div class="ex-note">Agarre ancho, codos hacia caderas</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/0017/assisted-pull-up/" target="_blank">Dominadas asistidas, o jalón agarre neutro ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 2'</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/jalon-al-pecho-agarre-ancho/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b1" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Remo en máquina sentado</div><div class="ex-note">Aprieta escápulas al final</div><div class="ex-alt">Remo sentado en polea baja con barra en V</div></div>
-      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 90"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/remo-sentado-maquina/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b2" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Remo en máquina sentado</div><div class="ex-note">Aprieta escápulas al final</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/6032/cable-low-seated-row-with-v-bar/" target="_blank">Remo sentado en polea baja con barra en V ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 2'</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/remo-sentado-maquina/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b2" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Remo mancuerna a una mano</div><div class="ex-note">Espalda paralela al suelo, apoyo en banco</div><div class="ex-alt">Remo a un brazo en polea</div></div>
+      <div class="ex-info"><div class="ex-name">Remo mancuerna a una mano</div><div class="ex-note">Espalda paralela al suelo, apoyo en banco</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/0214/cable-seated-one-arm-alternate-row/" target="_blank">Remo a un brazo en polea ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/remo-con-mancuerna-a-un-brazo-inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b3" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Curl inclinado con mancuernas</div><div class="ex-note">Banco 45°, brazos colgando detrás: bíceps estirado</div><div class="ex-alt">Curl en banco predicador</div></div>
+      <div class="ex-info"><div class="ex-name">Curl inclinado con mancuernas</div><div class="ex-note">Banco 45°, brazos colgando detrás: bíceps estirado</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/6406/ez-barbell-preacher-curl/" target="_blank">Curl en banco predicador ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://mundoentrenamiento.com/curl-de-biceps-en-banco-inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b4" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Curl martillo de pie</div><div class="ex-note">Agarre neutro, trabaja braquial. Codos quietos</div><div class="ex-alt">Curl martillo sentado, o con cuerda en polea</div></div>
+      <div class="ex-info"><div class="ex-name">Curl martillo de pie</div><div class="ex-note">Agarre neutro, trabaja braquial. Codos quietos</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/0165/cable-rope-hammer-curl/" target="_blank">Curl martillo sentado, o con cuerda en polea ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://mundoentrenamiento.com/curl-martillo-con-mancuernas/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b5" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Curl en polea baja</div><div class="ex-note">Tensión constante. Remate final, peso moderado</div><div class="ex-alt">Curl con barra Z de pie</div></div>
-      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/biceps/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b6" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Curl en polea baja</div><div class="ex-note">Tensión constante. Remate final, peso moderado</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/2238/ez-barbell-curl/" target="_blank">Curl con barra Z de pie ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://fitwill.app/es/exercise/0156/cable-curl/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="b6" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
       <div class="ex-info"><div class="ex-name">Cardio al final: remo o elíptica</div><div class="ex-note">Ritmo moderado: puedes hablar entrecortado. Sube 5 min cada 2 semanas</div><div class="ex-alt">Bici estática</div></div>
@@ -163,7 +164,7 @@
   <div class="exercises">
     <div class="ex-header"><span>Ejercicio</span><span>Series · Reps · ⏱ Descanso · Guía · Kg</span></div><div class="rest-tip">⏱ Descanso entre series = el que marca cada ejercicio. Entre ejercicios: 2–3 min (cambiar de máquina, respirar y beber agua).</div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Prensa de piernas</div><div class="ex-note">Pies al ancho de hombros, rodillas no colapsen</div><div class="ex-alt">Sentadilla hack en máquina · <a href="https://atlasdelmusculo.com/ejercicios/sentadilla-hack-en-maquina" target="_blank">ver cómo</a></div></div>
+      <div class="ex-info"><div class="ex-name">Prensa de piernas</div><div class="ex-note">Pies al ancho de hombros, rodillas no colapsen</div><div class="ex-alt"><a href="https://atlasdelmusculo.com/ejercicios/sentadilla-hack-en-maquina" target="_blank">Sentadilla hack en máquina ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 2'</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/quadriceps/leg-press/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c1" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
@@ -171,19 +172,19 @@
       <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">8–10</span><span class="chip chip-d">⏱ 2'</span><a class="guide-btn" href="https://enfaf.com/peso-muerto-rumano/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="c2" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Sentadilla goblet mancuerna</div><div class="ex-note">Profundidad cómoda, espalda recta</div><div class="ex-alt">No necesita máquina: mancuerna o kettlebell</div></div>
+      <div class="ex-info"><div class="ex-name">Sentadilla goblet mancuerna</div><div class="ex-note">Mínimo 14–16 kg: con 5 kg no suma. Profundidad cómoda, espalda recta</div><div class="ex-alt">No necesita máquina: mancuerna o kettlebell</div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12</span><span class="chip chip-d">⏱ 90"</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/quadriceps/goblet-squat-dumbbell/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c3" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Curl femoral sentado máquina</div><div class="ex-note">Sentado: más estiramiento del isquio que tumbado</div><div class="ex-alt">Puente de glúteo con mancuerna en el suelo · <a href="https://fitwill.app/es/exercise/3335/dumbbell-glute-bridge/" target="_blank">ver cómo</a></div></div>
-      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/hamstrings/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c4" placeholder="0"><span>kg</span></div></div>
+      <div class="ex-info"><div class="ex-name">Curl femoral sentado máquina</div><div class="ex-note">Sentado: más estiramiento del isquio que tumbado</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/3335/dumbbell-glute-bridge/" target="_blank">Puente de glúteo con mancuerna en el suelo ↗</a></div></div>
+      <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://www.corahealth.app/es/exercises/lever-seated-leg-curl" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c4" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Extensiones cuádriceps máquina</div><div class="ex-note">No uses impulso</div><div class="ex-alt">Sentadilla búlgara con mancuernas, 10 por pierna · <a href="https://gymkee.com/es/ejercicios/cuadriceps/sentadilla-bulgara-con-mancuernas/" target="_blank">ver cómo</a></div></div>
+      <div class="ex-info"><div class="ex-name">Extensiones cuádriceps máquina</div><div class="ex-note">No uses impulso</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/2290/dumbbell-bulgarian-split-squat/" target="_blank">Sentadilla búlgara con mancuernas, 10 por pierna ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://gymkee.com/pt/exercicios/quadriceps/seated-leg-extension-machine/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c5" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Gemelos en prensa de piernas</div><div class="ex-note">Solo la punta de los pies en el borde de la plataforma. Rodillas sin bloquear, sin rebotes</div><div class="ex-alt">Elevación de talones en escalón con mancuernas · <a href="https://smartworkout.app/es/biblioteca-ejercicios/piernas/elevaciones-de-talones-de-pie-con-mancuernas" target="_blank">ver cómo</a></div></div>
+      <div class="ex-info"><div class="ex-name">Gemelos en prensa de piernas</div><div class="ex-note">Solo la punta de los pies en el borde de la plataforma. Rodillas sin bloquear, sin rebotes</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/0417/dumbbell-standing-calf-raise/" target="_blank">Elevación de talones en escalón con mancuernas ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">4</span><span class="chip chip-r">15–20</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/pantorrillas/elevacion-de-gemelos-en-prensa/" target="_blank">Vídeo</a><div class="weight-box"><input type="number" data-key="c6" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
@@ -203,19 +204,19 @@
   <div class="exercises">
     <div class="ex-header"><span>Ejercicio</span><span>Series · Reps · ⏱ Descanso · Guía · Kg</span></div><div class="rest-tip">⏱ Descanso entre series = el que marca cada ejercicio. Entre ejercicios: 2–3 min (cambiar de máquina, respirar y beber agua).</div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Press banca mancuernas</div><div class="ex-note">Banco plano. Controla la bajada</div><div class="ex-alt">Press banca máquina sentado</div></div>
+      <div class="ex-info"><div class="ex-name">Press banca mancuernas</div><div class="ex-note">Banco plano. Controla la bajada</div><div class="ex-alt"><a href="https://www.hsnstore.com/blog/rutinas-entrenamiento/pecho/press-banca/maquina-sentado/" target="_blank">Press banca máquina sentado ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://musclewiki.com/es-es/exercise/dumbbell-bench-press" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="d1" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Remo en máquina sentado</div><div class="ex-note">Aprieta escápulas al final</div><div class="ex-alt">Remo sentado en polea baja con barra en V</div></div>
+      <div class="ex-info"><div class="ex-name">Remo en máquina sentado</div><div class="ex-note">Aprieta escápulas al final</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/6032/cable-low-seated-row-with-v-bar/" target="_blank">Remo sentado en polea baja con barra en V ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 75"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/dorsales/remo-sentado-maquina/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="d2" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Curl inclinado con mancuernas</div><div class="ex-note">Hazlo alternando con el tríceps, sin descanso entre uno y otro</div><div class="ex-alt">Curl en banco predicador</div></div>
+      <div class="ex-info"><div class="ex-name">Curl inclinado con mancuernas</div><div class="ex-note">Hazlo alternando con el tríceps, sin descanso entre uno y otro</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/6406/ez-barbell-preacher-curl/" target="_blank">Curl en banco predicador ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">10–12</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://mundoentrenamiento.com/curl-de-biceps-en-banco-inclinado/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="d3" placeholder="0"><span>kg</span></div></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Extensión tríceps polea hacia abajo</div><div class="ex-note">Alterna con el curl: una serie de cada y descanso al terminar la pareja</div><div class="ex-alt">Fondos de tríceps en banco (no bajes de 90° de codo)</div></div>
+      <div class="ex-info"><div class="ex-name">Extensión tríceps polea hacia abajo</div><div class="ex-note">Alterna con el curl: una serie de cada y descanso al terminar la pareja</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/2346/bench-dip-back-arms-wrong-right/" target="_blank">Fondos de tríceps en banco (no bajes de 90° de codo) ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">12–15</span><span class="chip chip-d">⏱ 60"</span><a class="guide-btn" href="https://gymkee.com/es/ejercicios/triceps/extension-de-triceps-en-polea-cuerda/" target="_blank">Guía</a><div class="weight-box"><input type="number" data-key="d4" placeholder="0"><span>kg</span></div></div>
     </div>
   </div>
@@ -225,17 +226,17 @@
 <div class="week">
   <div class="week-header">
     <div class="day-badge">Core</div>
-    <div class="day-title">3 MIN AL FINAL</div>
+    <div class="day-title">6 MIN AL FINAL</div>
     <div class="day-focus">2–3 veces/semana</div>
   </div>
   <div class="exercises">
     <div class="ex-header"><span>Ejercicio</span><span>Series · Tiempo · Desc</span></div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Plancha frontal</div><div class="ex-note">Cadera neutra, aprieta glúteo, respira</div><div class="ex-alt">Con rodillas apoyadas si no llegas a 30"</div></div>
+      <div class="ex-info"><div class="ex-name">Plancha frontal</div><div class="ex-note">Cadera neutra, aprieta glúteo, respira</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/4996/kneeling-plank/" target="_blank">Con rodillas apoyadas si no llegas a 30" ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">3</span><span class="chip chip-r">30–45"</span><span class="chip chip-d">⏱ 45"</span></div>
     </div>
     <div class="ex-row">
-      <div class="ex-info"><div class="ex-name">Plancha lateral</div><div class="ex-note">Oblicuo: clave para proteger la espalda. Cadera alta</div><div class="ex-alt">Con rodilla de abajo apoyada</div></div>
+      <div class="ex-info"><div class="ex-name">Plancha lateral</div><div class="ex-note">Oblicuo: clave para proteger la espalda. Cadera alta</div><div class="ex-alt"><a href="https://fitwill.app/es/exercise/0701/side-bridge-bent-knee/" target="_blank">Con rodilla de abajo apoyada ↗</a></div></div>
       <div class="ex-meta"><span class="chip chip-s">2</span><span class="chip chip-r">20–30"</span><span class="chip chip-d">⏱ 45"</span></div>
     </div>
   </div>
